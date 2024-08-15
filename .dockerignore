@@ -1,0 +1,6 @@
+db.sqlite3
+Pipfile*
+*/__pycache__
+.env
+.gitignore
+.github/
