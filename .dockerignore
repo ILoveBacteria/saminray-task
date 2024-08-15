@@ -4,3 +4,4 @@ Pipfile*
 .env
 .gitignore
 .github/
+nginx.conf
