@@ -4,13 +4,13 @@ from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework.response import Response
 
-from master.models import NameServer
-from master.serializers import NameServerSerializer
+from master.models import Server
+from master.serializers import ServerSerializer
 
 
 class SendAllView(APIView): 
     def post(self, request):
-        task_assigner_url = NameServer.objects.filter(name='task_assigner').get().url
+        task_assigner_url = Server.objects.filter(name='task_assigner').get().url
         response = requests.post(task_assigner_url, json=request.data)
         assigned_task = response.json()
         tasks_result = []
@@ -26,18 +26,18 @@ class SendSpecificView(APIView):
         return Response(result)
     
 
-class NameServerList(generics.ListCreateAPIView):
-    queryset = NameServer.objects.all()
-    serializer_class = NameServerSerializer
+class ServerList(generics.ListCreateAPIView):
+    queryset = Server.objects.all()
+    serializer_class = ServerSerializer
 
 
-class NameServerDetail(generics.RetrieveUpdateAPIView):
-    queryset = NameServer.objects.all()
-    serializer_class = NameServerSerializer
+class ServerDetail(generics.RetrieveUpdateAPIView):
+    queryset = Server.objects.all()
+    serializer_class = ServerSerializer
     lookup_field = 'name'
 
 
 def run_task(tasks: list, server_name: str) -> list:
-    task_runner_url = NameServer.objects.filter(name=server_name).get().url
+    task_runner_url = Server.objects.filter(name=server_name).get().url
     response = requests.post(task_runner_url, json=tasks)
     return response.json()

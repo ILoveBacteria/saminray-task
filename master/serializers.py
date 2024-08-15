@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-from master.models import NameServer
+from master.models import Server
 
 
-class NameServerSerializer(serializers.ModelSerializer):
+class ServerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = NameServer
+        model = Server
         fields = '__all__'
