@@ -3,7 +3,7 @@ version: "3.9"
 services:
   web:
     container_name: web-server
-    image: ghcr.io/ILoveBacteria/saminray_task:latest
+    image: ghcr.io/ilovebacteria/saminray_task:latest
     env_file:
       - ./.env
     volumes:

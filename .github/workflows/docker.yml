@@ -27,4 +27,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: "ghcr.io/ILoveBacteria/saminray_task:latest"
+          tags: "ghcr.io/ilovebacteria/saminray_task:latest"
